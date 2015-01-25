@@ -1,0 +1,151 @@
+aditya
+65: 5 13
+1,2c1,2
+< This is just a
+< Example file
+---
+> hello how
+> are you
+788	.
+/dev/pts/0
+NAME     LINE         TIME             COMMENT
+adi      :0           2015-01-25 21:17 (:0)
+adi      pts/0        2015-01-25 21:24 (:0)
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/sda6       17169816 3226504  13048080  20% /
+none                   4       0         4   0% /sys/fs/cgroup
+udev             1945424       4   1945420   1% /dev
+tmpfs             392044    1108    390936   1% /run
+none                5120       0      5120   0% /run/lock
+none             1960208     156   1960052   1% /run/shm
+none              102400      44    102356   1% /run/user
+Usage:	iw [options] command
+Options:
+	--debug		enable netlink debugging
+	--version	show version (3.4)
+Commands:
+	help [command]
+	event [-t] [-r] [-f]
+	phy
+	list
+	phy <phyname> info
+	dev
+	dev <devname> info
+	dev <devname> del
+	dev <devname> interface add <name> type <type> [mesh_id <meshid>] [4addr on|off] [flags <flag>*]
+	phy <phyname> interface add <name> type <type> [mesh_id <meshid>] [4addr on|off] [flags <flag>*]
+	dev <devname> ibss join <SSID> <freq in MHz> [HT20|HT40+|HT40-|NOHT] [fixed-freq] [<fixed bssid>] [beacon-interval <TU>] [basic-rates <rate in Mbps,rate2,...>] [mcast-rate <rate in Mbps>] [key d:0:abcde]
+	dev <devname> ibss leave
+	dev <devname> station dump
+	dev <devname> station set <MAC address> vlan <ifindex>
+	dev <devname> station set <MAC address> plink_action <open|block>
+	dev <devname> station del <MAC address>
+	dev <devname> station get <MAC address>
+	dev <devname> survey dump
+	dev <devname> mesh leave
+	dev <devname> mesh join <mesh ID> [mcast-rate <rate in Mbps>] [<param>=<value>]*
+	dev <devname> mpath dump
+	dev <devname> mpath set <destination MAC address> next_hop <next hop MAC address>
+	dev <devname> mpath new <destination MAC address> next_hop <next hop MAC address>
+	dev <devname> mpath del <MAC address>
+	dev <devname> mpath get <MAC address>
+	dev <devname> scan [-u] [freq <freq>*] [ies <hex as 00:11:..>] [ssid <ssid>*|passive]
+	dev <devname> scan trigger [freq <freq>*] [ies <hex as 00:11:..>] [ssid <ssid>*|passive]
+	dev <devname> scan dump [-u]
+	reg get
+	reg set <ISO/IEC 3166-1 alpha2>
+	dev <devname> connect [-w] <SSID> [<freq in MHz>] [<bssid>] [key 0:abcde d:1:6162636465]
+	dev <devname> disconnect
+	dev <devname> link
+	dev <devname> offchannel <freq> <duration>
+	dev <devname> cqm rssi <threshold|off> [<hysteresis>]
+	phy <phyname> wowlan show 
+	phy <phyname> wowlan disable 
+	phy <phyname> wowlan enable [any] [disconnect] [magic-packet] [gtk-rekey-failure] [eap-identity-request] [4way-handshake] [rfkill-release] [patterns <pattern>*]
+	dev <devname> roc start <freq> <time>
+	phy <phyname> set antenna <bitmap> | all | <tx bitmap> <rx bitmap>
+	dev <devname> set txpower <auto|fixed|limit> [<tx power in mBm>]
+	phy <phyname> set txpower <auto|fixed|limit> [<tx power in mBm>]
+	phy <phyname> set distance <distance>
+	phy <phyname> set coverage <coverage class>
+	phy <phyname> set netns <pid>
+	phy <phyname> set rts <rts threshold|off>
+	phy <phyname> set frag <fragmentation threshold|off>
+	dev <devname> set channel <channel> [HT20|HT40+|HT40-]
+	phy <phyname> set channel <channel> [HT20|HT40+|HT40-]
+	dev <devname> set freq <freq> [HT20|HT40+|HT40-]
+	phy <phyname> set freq <freq> [HT20|HT40+|HT40-]
+	phy <phyname> set name <new name>
+	dev <devname> set peer <MAC address>
+	dev <devname> set noack_map <map>
+	dev <devname> set 4addr <on|off>
+	dev <devname> set type <type>
+	dev <devname> set meshid <meshid>
+	dev <devname> set monitor <flag>*
+	dev <devname> set mesh_param <param>=<value> [<param>=<value>]*
+	dev <devname> set power_save <on|off>
+	dev <devname> set bitrates [legacy-<2.4|5> <legacy rate in Mbps>*] [mcs-<2.4|5> <MCS index>*]
+	dev <devname> get mesh_param [<param>]
+	dev <devname> get power_save <param>
+
+You can omit the 'phy' or 'dev' if the identification is unique,
+e.g. "iw wlan0 info" or "iw phy0 info". (Don't when scripting.)
+
+Do NOT screenscrape this tool, we don't consider its output stable.
+
+a tsuj si sihT
+elif elpmaxE
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+This is just a
+Example file
+eth0      Link encap:Ethernet  HWaddr d4:be:d9:4a:9d:87  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:165 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:165 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:11761 (11.7 KB)  TX bytes:11761 (11.7 KB)
+
+wlan0     Link encap:Ethernet  HWaddr 68:5d:43:fb:e8:84  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+adi       2442  0.4  0.1  26864  3972 pts/0    Ss   21:24   0:00 bash
+adi       2491  0.0  0.0  26864  2716 pts/0    S+   21:24   0:00 bash
+adi       2505  0.0  0.0  22644  1296 pts/0    R+   21:24   0:00 ps -u
+         system boot  2015-01-25 21:17
+Linux aditya 3.13.0-24-generic #46-Ubuntu SMP Thu Apr 10 19:11:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+             total       used       free     shared    buffers     cached
+Mem:       3920420     962180    2958240     114852      59552     470540
+-/+ buffers/cache:     432088    3488332
+Swap:            0          0          0
