@@ -1,0 +1,103 @@
+/*Implementation of First Come First serve Scheduling algorithm*/
+#include<stdio.h>
+struct node      /*Creates a queue using linklist*/
+{
+	int num, BurstTime;
+	/*num is for process ID*/
+	struct node *next;
+}*front = NULL, *tail = NULL;
+
+void Enqueue(int);				
+int count=0;
+void main()
+{
+	int no;
+	printf("\nEnter number of process:");
+	scanf("%d",&no);
+	Enqueue(no);
+	tail=front;
+	int flag=0;
+	count=0;
+	while(1)
+	{
+		if(front==NULL)				
+		/*If no process are there for execution*/
+		printf("\nThere are no processes to be executed.");
+		else
+		{
+			if(count==no)
+			/*Repeats the process which are not completed in one time slot*/				
+			{
+				tail=front;
+			}
+			if(tail->BurstTime>200)	
+			/*Checks whether the process will complete in the current time slot or not*/		
+			{
+				printf("\nProcess %d is running...for 200 counts",tail->num);
+				tail->BurstTime=tail->BurstTime-200;
+				/*Calculates the remaining time after one time slot completes.*/
+				printf("\nRemainingTime of Process %d is %d",tail->num,tail->BurstTime);
+			}
+			else
+			/*The process will complete in the current time slot*/
+			{
+				printf("\nProcess %d is running...%d counts",tail->num,tail->BurstTime);
+				printf("\nProcess %d is finished",tail->num);
+				tail->BurstTime=0;
+				flag++;
+				/*Flag will calculate number of time the process completes*/
+			}
+			tail=tail->next;
+			count++;
+		}	
+		if(flag==no)
+		/*All the process are completes successfully.*/
+		{
+			printf("\nAll the process are completed successfully.\n");
+			break;
+		}
+	}	
+}
+void Enqueue(int no)
+{
+	int i;
+	for(i=0;i<no;i++)
+	{
+		if(front == NULL)
+		/*Creation of first node*/
+		{
+			tail = (struct node *)malloc(sizeof(struct node));
+			tail->next = NULL;
+			front = tail;
+			count=1;
+			/*Process ID*/
+			printf("\nEnter burst time of process 1:");
+			/*Burst time of particular process*/
+			scanf("%d",&front->BurstTime);
+			front->num=count;
+			
+		}
+		else
+		/*Creation of linklist*/
+		{
+			count++;
+			if(count==no)
+			/*Creating circular linklist as all the process will not be completed in single time slot.*/
+			{
+				tail->next = (struct node *)malloc(sizeof(struct node));
+				printf("\nEnter burst time of process %d:",count);
+				scanf("%d",&tail->next->BurstTime);
+				tail = tail->next;
+				tail->num=count;
+				tail->next = NULL;
+				break;
+			}
+			tail->next = (struct node *)malloc(sizeof(struct node));
+			printf("\nEnter burst time of process %d:",count);
+			scanf("%d",&tail->next->BurstTime);
+			tail = tail->next;
+			tail->num=count;
+			tail->next = NULL;
+		}
+	}
+}
