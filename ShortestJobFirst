@@ -1,4 +1,4 @@
-/*Implementation of Shortest process first Scheduling algorithm*/
+/*Implementation of First Come First serve Scheduling algorithm*/
 #include<stdio.h>
 struct node      /*Creates a queue using linklist*/
 {
@@ -44,28 +44,12 @@ void main()
 		printf("\nThere are no processes to be executed.");
 		else
 		{
-			if(count==no)
-			/*Repeats the process which are not completed in one time slot*/				
-			{
-				tail=front;
-			}
-			if(tail->BurstTime>200)	
-			/*Checks whether the process will complete in the current time slot or not*/		
-			{
-				printf("\nProcess %d is running...for 200 counts",tail->num);
-				tail->BurstTime=tail->BurstTime-200;
-				/*Calculates the remaining time after one time slot completes.*/
-				printf("\nRemainingTime of Process %d is %d",tail->num,tail->BurstTime);
-			}
-			else if(tail->BurstTime<=200 && tail->BurstTime!=0)
 			/*The process will complete in the current time slot*/
-			{
 				printf("\nProcess %d is running...%d counts",tail->num,tail->BurstTime);
 				printf("\nProcess %d is finished",tail->num);
 				tail->BurstTime=0;
 				flag++;
 				/*Flag will calculate number of time the process completes*/
-			}
 			tail=tail->next;
 			count++;
 		}	
