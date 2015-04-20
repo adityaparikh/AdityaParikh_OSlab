@@ -1,0 +1,134 @@
+/*Implementation of Earliest Deadline First Scheduling algorithm*/
+#include<stdio.h>
+struct node      /*Creates a queue using linklist*/
+{
+	int num, ReleaseTime,Deadline,time;
+	/*num is for process ID*/
+	struct node *next;
+}*front = NULL, *tail = NULL, *current=NULL, *current1=NULL;
+int temp1,temp2,temp_num;
+void Enqueue(int);				
+int count=0;
+int total_time=0;
+void main()
+{
+	int no,j;
+	int i;
+	printf("\nEnter number of process:");
+	scanf("%d",&no);
+	Enqueue(no);
+	
+	tail=front;
+	int flag=0;
+	count=0;
+	while(1)
+	{
+		if(front==NULL)				
+		/*If no process are there for execution*/
+		printf("\nThere are no processes to be executed.");
+		else
+		{
+			/*The process will complete in the current time slot*/
+				if(tail->Deadline!=0)
+				{
+					printf("\nProcess %d is running...%d counts",tail->num,tail->Deadline-tail->ReleaseTime);
+					printf("\nProcess %d is finished",tail->num);
+					flag++;
+					tail=tail->next;
+					/*Flag will calculate number of time the process completes*/
+					count++;
+				}
+				else
+				{
+					flag++;
+					tail=tail->next;
+				}
+		}	
+		if(flag==no)
+		/*All the process are completed successfully.*/
+		{
+			printf("\nAll the process are completed successfully.\n");
+			break;
+		}
+	}
+	for(current=front;current!=NULL;current=current->next)
+		{
+			if(current->Deadline==0)
+			printf("\nProcess %d was missed from its regular place",current->num);
+		}
+}
+void Enqueue(int no)
+{
+	int i,tem;
+	for(i=0;i<no;i++)
+	{
+		if(front == NULL)
+		/*Creation of first node*/
+		{
+			tail = (struct node *)malloc(sizeof(struct node));
+			tail->next = NULL;
+			front = tail;
+			count=1;
+			/*Process ID*/
+			printf("\nEnter Release time of process 1:");
+			/*Release time of particular process*/
+			scanf("%d",&front->ReleaseTime);
+			printf("\nEnter Deadline of process 1:");
+			/*Deadline of particular process*/
+			scanf("%d",&front->Deadline);
+			front->num=count;
+			front->time=0;
+		}
+		else
+		/*Creation of linklist*/
+		{
+			count++;
+			if(count==no)
+			/*Creating circular linklist as all the process will not be completed in single time slot.*/
+			{
+				tail->next = (struct node *)malloc(sizeof(struct node));
+				printf("\n\nEnter Release time of process %d:",count);
+				scanf("%d",&tail->next->ReleaseTime);
+				printf("\nEnter deadline of process %d:",count);
+				scanf("%d",&tail->next->Deadline);
+				tail->next->num=count;
+				tail->next->time=tail->time+((tail->Deadline)-(tail->ReleaseTime));
+				tail = tail->next;
+				tail->next = NULL;
+				break;
+			}
+			tail->next = (struct node *)malloc(sizeof(struct node));
+			printf("\n\nEnter Release time of process %d:",count);
+			scanf("%d",&tail->next->ReleaseTime);
+			printf("\nEnter deadline of process %d:",count);
+			scanf("%d",&tail->next->Deadline);
+			tail->next->time=tail->time+((tail->Deadline)-(tail->ReleaseTime));
+			tail = tail->next;
+			tail->num=count;
+			tail->next = NULL;
+		}
+	}
+	for(current=front;current!=NULL;current=current->next)
+	{
+		for(current1=current->next;current1!=NULL;current1=current1->next)
+		{
+			if(current1->ReleaseTime<=current1->time && current1->Deadline<current->Deadline)
+			{
+				temp1=current->ReleaseTime;
+				temp2=current->Deadline;
+				temp_num=current->num;
+				current->ReleaseTime=current1->ReleaseTime;
+				current->Deadline=current1->Deadline;
+				current->num=current1->num;
+				current1->ReleaseTime=temp1;
+				current1->Deadline=temp2;
+				current1->num=temp_num;
+			}
+			else if(current1->ReleaseTime<=current1->time)
+			{
+				current1->Deadline=0;
+				continue;
+			}	
+		}
+	}
+}
